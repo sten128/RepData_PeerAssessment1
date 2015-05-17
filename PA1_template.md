@@ -1,23 +1,13 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ###REMARK:
 **To perform this analysis ggplot2 library is required
 
-```{r library, echo=TRUE}
-library(ggplot2)
-
-library(knitr)
-```
-
 ## Loading and preprocessing the data
 
-```{r load, echo = TRUE}
+
+```r
 activity<-read.csv("activity.csv")
 
 stepsday<-aggregate(activity$steps ~ activity$date, data=activity, sum)
@@ -28,28 +18,30 @@ names(stepsday)<-c("date", "totalsteps")
 
 ## What is mean total number of steps taken per day?
 
-```{r, echo=TRUE}
+
+```r
 meanpday<-mean(stepsday$totalsteps)
 
 medianpday<-median(stepsday$totalsteps)
 
 meanpday
+```
 
+```
+## [1] 10766.19
+```
+
+```r
 medianpday
+```
 
+```
+## [1] 10765
 ```
 
 
 
 ## What is the average daily activity pattern?
-
-```{r average daily pattern, echo=TRUE}
-
-fig1 <- ggplot(stepsday, aes(x=totalsteps))
-
-fig1 + geom_histogram(aes(y=..density..), binwidth=2000)
-
-```
 
 
 
